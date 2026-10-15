@@ -1,0 +1,29 @@
+# Fast Download Sync example configuration.
+# Copy to /etc/fastdownload-sync/config.yaml and adjust source paths.
+sources:
+  - name: css-main
+    path: /var/lib/pterodactyl/volumes/REPLACE_WITH_SERVER_UUID/cstrike
+    extensions:
+      - .bsp
+      - .nav
+      - .mdl
+      - .vtx
+      - .vvd
+      - .phy
+      - .vmt
+      - .vtf
+      - .wav
+      - .mp3
+      - .spr
+      - .pcf
+      - .res
+      - .bz2
+    exclude:
+      - "*.bak"
+      - "*.tmp"
+
+# Must be a directory served by your configured web server.
+# Keep this path outside Pterodactyl volume directories.
+destination: /var/www/html/fastdownload
+state_file: /var/lib/fastdownload-sync/state.sqlite
+scan_interval: 5m

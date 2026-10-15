@@ -1,0 +1,27 @@
+[Unit]
+Description=Fast Download Sync for Counter-Strike FastDL assets
+After=local-fs.target
+Wants=local-fs.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/fastdownload-sync
+ExecStart=/opt/fastdownload-sync/bin/fastdownload-sync -config /etc/fastdownload-sync/config.yaml watch
+Restart=on-failure
+RestartSec=5s
+UMask=0022
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+SystemCallArchitectures=native
+ReadOnlyPaths=/var/lib/pterodactyl/volumes
+ReadWritePaths=/var/www/html/fastdownload /var/lib/fastdownload-sync
+
+[Install]
+WantedBy=multi-user.target
